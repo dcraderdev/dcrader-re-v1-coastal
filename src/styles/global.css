@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream text-charcoal font-sans;
+  }
+}
+
+@layer utilities {
+  .text-fluid-hero {
+    font-size: clamp(4rem, 8vw, 8rem);
+  }
+  .text-fluid-xl {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+  }
+  .text-fluid-2xl {
+    font-size: clamp(3rem, 6vw, 7rem);
+  }
+}

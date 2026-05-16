@@ -1,0 +1,821 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+
+const listings = [
+  {
+    id: 1,
+    address: '2847 Requeza St',
+    neighborhood: 'Leucadia, Encinitas',
+    price: '$2.395M',
+    beds: 4,
+    baths: '3.5',
+    sqft: '2,840',
+    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=900&q=85&fit=crop&auto=format',
+    status: 'Active',
+  },
+  {
+    id: 2,
+    address: '3521 Triton St',
+    neighborhood: 'Terramar, Carlsbad',
+    price: '$3.195M',
+    beds: 5,
+    baths: '4',
+    sqft: '3,620',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=85&fit=crop&auto=format',
+    status: 'Active',
+  },
+  {
+    id: 3,
+    address: '448 Ocean View Ave',
+    neighborhood: 'Del Mar',
+    price: '$3.85M',
+    beds: 4,
+    baths: '4.5',
+    sqft: '3,100',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6d2d6a55?w=900&q=85&fit=crop&auto=format',
+    status: 'Active',
+  },
+  {
+    id: 4,
+    address: '112 Rios Ave',
+    neighborhood: 'Solana Beach',
+    price: '$1.875M',
+    beds: 3,
+    baths: '2.5',
+    sqft: '1,980',
+    image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=900&q=85&fit=crop&auto=format',
+    status: 'Active',
+  },
+  {
+    id: 5,
+    address: '688 Neptune Ave',
+    neighborhood: 'Encinitas',
+    price: '$2.95M',
+    beds: 4,
+    baths: '3',
+    sqft: '2,450',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85&fit=crop&auto=format',
+    status: 'Active',
+  },
+  {
+    id: 6,
+    address: '7240 Surfside Lane',
+    neighborhood: 'Carlsbad',
+    price: '$1.295M',
+    beds: 4,
+    baths: '3',
+    sqft: '2,700',
+    image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=900&q=85&fit=crop&auto=format',
+    status: 'Active',
+  },
+];
+
+const soldListings = [
+  {
+    address: '1421 Eolus Ave',
+    neighborhood: 'Leucadia',
+    price: '$2.1M',
+    soldDate: 'Mar 2025',
+    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80&fit=crop&auto=format',
+  },
+  {
+    address: '534 Coast Blvd S',
+    neighborhood: 'Del Mar',
+    price: '$4.25M',
+    soldDate: 'Feb 2025',
+    image: 'https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=600&q=80&fit=crop&auto=format',
+  },
+  {
+    address: '2209 Manchester Ave',
+    neighborhood: 'Cardiff',
+    price: '$1.68M',
+    soldDate: 'Jan 2025',
+    image: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=600&q=80&fit=crop&auto=format',
+  },
+  {
+    address: '901 Hymettus Ave',
+    neighborhood: 'Leucadia',
+    price: '$3.05M',
+    soldDate: 'Dec 2024',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80&fit=crop&auto=format',
+  },
+  {
+    address: '380 La Costa Ave',
+    neighborhood: 'Carlsbad',
+    price: '$2.45M',
+    soldDate: 'Nov 2024',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80&fit=crop&auto=format',
+  },
+  {
+    address: '1055 Via Vera Cruz',
+    neighborhood: 'San Marcos',
+    price: '$1.32M',
+    soldDate: 'Oct 2024',
+    image: 'https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=600&q=80&fit=crop&auto=format',
+  },
+];
+
+const testimonials = [
+  {
+    quote: "Sarah didn't just find us a house—she found us our place in the world. We'd been searching for two years before we met her. Three weeks later, we were signing papers on our dream home in Leucadia.",
+    author: 'The Harrington Family',
+    location: 'Leucadia, Encinitas',
+  },
+  {
+    quote: "I've worked with a dozen agents over the years. Sarah is in a completely different league. Her market knowledge is encyclopedic, and she genuinely cares about finding the right fit.",
+    author: 'Marcus & Diane Chen',
+    location: 'Del Mar',
+  },
+  {
+    quote: "She negotiated $180K below asking and still made the sellers feel good about the deal. That's a rare skill. Our family is forever grateful.",
+    author: 'The Pemberton-Walsh Family',
+    location: 'Solana Beach',
+  },
+];
+
+const lifestylePhotos = [
+  { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=85', caption: 'Moonlight Beach', label: 'Encinitas' },
+  { src: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=85', caption: 'Morning Surf', label: 'Swamis Reef' },
+  { src: 'https://images.unsplash.com/photo-1455587734955-081b22074882?w=800&q=85', caption: 'Golden Hour', label: 'Del Mar Bluffs' },
+  { src: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=800&q=85', caption: 'Family Memories', label: 'Cardiff State Beach' },
+  { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=85', caption: 'The Coastline', label: 'North County' },
+];
+
+const credentials = [
+  'Compass Top Producer — North County Coastal, 2019–2025',
+  'San Diego Association of Realtors — Platinum Member',
+  'Certified Luxury Home Marketing Specialist (CLHMS)',
+  'Encinitas Coastal Conservancy — Board Member',
+  'UC San Diego — BA, Communications',
+];
+
+const footerLinks = ['Properties', 'Neighborhoods', 'About Sarah', 'Contact', 'Home Valuation'];
+
+const footerStats = [
+  { value: '$680M+', label: 'Total Volume' },
+  { value: '340+', label: 'Homes Closed' },
+  { value: '98.7%', label: 'List-to-Sale Ratio' },
+  { value: '9 days', label: 'Avg Days on Market' },
+];
+
+const valueProps = [
+  'Complimentary home valuation within 24 hours',
+  'No pressure, no obligation — just honest insight',
+  'Direct line to Sarah, not a call center',
+  'Compass Concierge program to maximize value',
+];
+---
+
+<Layout>
+  <!-- ===== NAV ===== -->
+  <nav id="nav" class="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-md border-b border-sand/20 transition-all duration-300">
+    <div class="max-w-screen-xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+      <a href="/" class="flex flex-col leading-none">
+        <span class="font-serif text-xl font-black italic text-charcoal tracking-tight">Sarah Mitchell</span>
+        <span class="text-[10px] font-sans font-medium uppercase tracking-[0.25em] text-sage mt-0.5">Encinitas</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#listings" class="text-[11px] font-sans font-medium uppercase tracking-widest text-charcoal/70 hover:text-sage transition-colors">Properties</a>
+        <a href="#lifestyle" class="text-[11px] font-sans font-medium uppercase tracking-widest text-charcoal/70 hover:text-sage transition-colors">Neighborhoods</a>
+        <a href="#bio" class="text-[11px] font-sans font-medium uppercase tracking-widest text-charcoal/70 hover:text-sage transition-colors">About</a>
+        <a href="#contact" class="text-[11px] font-sans font-medium uppercase tracking-widest text-charcoal/70 hover:text-sage transition-colors">Contact</a>
+        <a href="tel:7605550192" class="ml-2 px-5 py-2 rounded-full border border-sage text-sage text-[11px] font-sans font-medium uppercase tracking-widest hover:bg-sage hover:text-cream transition-all duration-200">
+          Call (760) 555-0192
+        </a>
+      </div>
+      <button id="hamburger" class="lg:hidden flex flex-col gap-1.5 p-2 z-50 relative" aria-label="Open menu">
+        <span class="w-6 h-0.5 bg-charcoal transition-all duration-300 origin-center" id="ham-1"></span>
+        <span class="w-6 h-0.5 bg-charcoal transition-all duration-300" id="ham-2"></span>
+        <span class="w-4 h-0.5 bg-charcoal transition-all duration-300 origin-center" id="ham-3"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed inset-0 z-40 bg-cream flex flex-col items-center justify-center gap-8 translate-x-full transition-transform duration-300 ease-in-out">
+    <a href="#listings" class="mobile-nav-link font-serif text-4xl italic text-charcoal hover:text-sage transition-colors">Properties</a>
+    <a href="#lifestyle" class="mobile-nav-link font-serif text-4xl italic text-charcoal hover:text-sage transition-colors">Neighborhoods</a>
+    <a href="#bio" class="mobile-nav-link font-serif text-4xl italic text-charcoal hover:text-sage transition-colors">About</a>
+    <a href="#contact" class="mobile-nav-link font-serif text-4xl italic text-charcoal hover:text-sage transition-colors">Contact</a>
+    <a href="tel:7605550192" class="mt-4 px-8 py-3 rounded-full bg-sage text-cream font-sans text-sm font-medium uppercase tracking-widest hover:bg-sage-dark transition-colors">
+      (760) 555-0192
+    </a>
+  </div>
+
+  <main>
+    <!-- ===== HERO: ASYMMETRIC SPLIT ===== -->
+    <section id="hero" class="min-h-screen flex flex-col lg:flex-row">
+      <!-- Left: Sage panel -->
+      <div class="bg-sage flex flex-col justify-between px-8 lg:px-16 pt-28 pb-10 lg:w-[45%] min-h-[65vh] lg:min-h-screen">
+        <div>
+          <p class="text-[10px] font-sans font-medium uppercase tracking-[0.35em] text-cream/60 mb-10">Compass · Encinitas</p>
+          <h1 class="font-serif font-black text-cream leading-[0.88] tracking-tight mb-6" style="font-size: clamp(4rem, 7.5vw, 7.5rem);">
+            Sarah<br />Mitchell
+          </h1>
+          <p class="font-serif italic text-cream/80 mb-10 leading-snug" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem);">
+            Your home story<br />starts here.
+          </p>
+          <a href="#listings" class="inline-block px-7 py-3.5 border-2 border-cream text-cream font-sans text-xs font-medium uppercase tracking-widest hover:bg-cream hover:text-sage transition-all duration-200 rounded-sm">
+            Explore Properties &rarr;
+          </a>
+          <br />
+          <a href="tel:7605550192" class="mt-5 inline-block text-cream/55 font-sans text-sm hover:text-cream transition-colors underline underline-offset-4">
+            Or call (760) 555-0192
+          </a>
+        </div>
+        <!-- Stats strip -->
+        <div class="border-t border-cream/20 pt-8 mt-12 grid grid-cols-2 xl:grid-cols-4 gap-y-6 gap-x-4">
+          <div>
+            <p class="font-serif font-black text-cream text-2xl leading-none">340+</p>
+            <p class="text-cream/55 font-sans text-[10px] uppercase tracking-widest mt-1.5">Homes Sold</p>
+          </div>
+          <div>
+            <p class="font-serif font-black text-cream text-2xl leading-none">11</p>
+            <p class="text-cream/55 font-sans text-[10px] uppercase tracking-widest mt-1.5">Years</p>
+          </div>
+          <div>
+            <p class="font-serif font-black text-cream text-2xl leading-none">$680M</p>
+            <p class="text-cream/55 font-sans text-[10px] uppercase tracking-widest mt-1.5">Volume</p>
+          </div>
+          <div>
+            <p class="font-serif font-black text-cream text-2xl leading-none">9</p>
+            <p class="text-cream/55 font-sans text-[10px] uppercase tracking-widest mt-1.5">Days avg</p>
+          </div>
+        </div>
+      </div>
+      <!-- Right: Hero image -->
+      <div class="relative lg:w-[55%] min-h-[50vw] lg:min-h-screen overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=2000&q=90&fit=crop&auto=format"
+          alt="Luxury coastal home in Encinitas"
+          class="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+        />
+        <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-sage to-transparent pointer-events-none hidden lg:block"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/25 via-transparent to-transparent pointer-events-none"></div>
+      </div>
+    </section>
+
+    <!-- ===== CHAPTER ONE: LISTINGS ===== -->
+    <section id="listings" class="py-24 lg:py-36 px-6 lg:px-16 max-w-screen-2xl mx-auto">
+      <div class="mb-16 fade-in">
+        <p class="text-[10px] font-sans font-medium uppercase tracking-[0.35em] text-sage mb-3">Chapter One</p>
+        <h2 class="font-serif font-black text-charcoal leading-tight" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">Your Perfect Home</h2>
+        <p class="mt-4 font-sans text-charcoal/55 max-w-lg leading-relaxed" style="font-size: 1.05rem;">
+          Carefully curated coastal properties along San Diego's most coveted shoreline communities.
+        </p>
+      </div>
+
+      <!-- Asymmetric grid — Row 1: 5 + 7 -->
+      <div class="grid grid-cols-12 gap-6 lg:gap-8">
+        <!-- Card 1: col-span-5 -->
+        <div class="col-span-12 md:col-span-5 fade-in" style="transform: rotate(-1.2deg);">
+          <article class="listing-card bg-white overflow-hidden group cursor-pointer" style="box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
+            <div class="overflow-hidden" style="aspect-ratio: 4/3;">
+              <img src={listings[0].image} alt={listings[0].address} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-sage font-medium mb-1">{listings[0].neighborhood}</p>
+                  <h3 class="font-serif font-bold text-charcoal text-xl">{listings[0].address}</h3>
+                </div>
+                <span class="px-3 py-1 bg-sage/10 text-sage text-[10px] font-sans font-medium uppercase tracking-widest rounded-full shrink-0 ml-3">{listings[0].status}</span>
+              </div>
+              <p class="font-serif font-black text-charcoal text-2xl mb-4">{listings[0].price}</p>
+              <div class="flex gap-4 text-charcoal/45 font-sans text-xs uppercase tracking-widest border-t border-cream-dark pt-4">
+                <span>{listings[0].beds} bd</span><span>&middot;</span><span>{listings[0].baths} ba</span><span>&middot;</span><span>{listings[0].sqft} sf</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Card 2: col-span-7 -->
+        <div class="col-span-12 md:col-span-7 fade-in" style="transform: rotate(0.8deg);">
+          <article class="listing-card bg-white overflow-hidden group cursor-pointer" style="box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
+            <div class="overflow-hidden" style="aspect-ratio: 4/3;">
+              <img src={listings[1].image} alt={listings[1].address} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-sage font-medium mb-1">{listings[1].neighborhood}</p>
+                  <h3 class="font-serif font-bold text-charcoal text-xl">{listings[1].address}</h3>
+                </div>
+                <span class="px-3 py-1 bg-sage/10 text-sage text-[10px] font-sans font-medium uppercase tracking-widest rounded-full shrink-0 ml-3">{listings[1].status}</span>
+              </div>
+              <p class="font-serif font-black text-charcoal text-2xl mb-4">{listings[1].price}</p>
+              <div class="flex gap-4 text-charcoal/45 font-sans text-xs uppercase tracking-widest border-t border-cream-dark pt-4">
+                <span>{listings[1].beds} bd</span><span>&middot;</span><span>{listings[1].baths} ba</span><span>&middot;</span><span>{listings[1].sqft} sf</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Row 2: 3x col-span-4 -->
+        {listings.slice(2, 5).map((listing, i) => (
+          <div class={`col-span-12 md:col-span-4 fade-in`} style={`transform: rotate(${i % 2 === 0 ? '0.8deg' : '-1.2deg'});`}>
+            <article class="listing-card bg-white overflow-hidden group cursor-pointer" style="box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
+              <div class="overflow-hidden" style="aspect-ratio: 4/3;">
+                <img src={listing.image} alt={listing.address} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+              </div>
+              <div class="p-5">
+                <div class="flex items-start justify-between mb-2">
+                  <div>
+                    <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-sage font-medium mb-1">{listing.neighborhood}</p>
+                    <h3 class="font-serif font-bold text-charcoal text-lg">{listing.address}</h3>
+                  </div>
+                  <span class="px-2 py-1 bg-sage/10 text-sage text-[10px] font-sans font-medium uppercase tracking-widest rounded-full shrink-0 ml-2">{listing.status}</span>
+                </div>
+                <p class="font-serif font-black text-charcoal text-xl mb-3">{listing.price}</p>
+                <div class="flex gap-3 text-charcoal/45 font-sans text-xs uppercase tracking-widest border-t border-cream-dark pt-3">
+                  <span>{listing.beds} bd</span><span>&middot;</span><span>{listing.baths} ba</span><span>&middot;</span><span>{listing.sqft} sf</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        ))}
+
+        <!-- Row 3: col-span-7 + col-span-5 -->
+        <div class="col-span-12 md:col-span-7 fade-in" style="transform: rotate(-0.8deg);">
+          <article class="listing-card bg-white overflow-hidden group cursor-pointer" style="box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
+            <div class="overflow-hidden" style="aspect-ratio: 4/3;">
+              <img src={listings[4].image} alt={listings[4].address} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-sage font-medium mb-1">{listings[4].neighborhood}</p>
+                  <h3 class="font-serif font-bold text-charcoal text-xl">{listings[4].address}</h3>
+                </div>
+                <span class="px-3 py-1 bg-sage/10 text-sage text-[10px] font-sans font-medium uppercase tracking-widest rounded-full shrink-0 ml-3">{listings[4].status}</span>
+              </div>
+              <p class="font-serif font-black text-charcoal text-2xl mb-4">{listings[4].price}</p>
+              <div class="flex gap-4 text-charcoal/45 font-sans text-xs uppercase tracking-widest border-t border-cream-dark pt-4">
+                <span>{listings[4].beds} bd</span><span>&middot;</span><span>{listings[4].baths} ba</span><span>&middot;</span><span>{listings[4].sqft} sf</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-span-12 md:col-span-5 fade-in" style="transform: rotate(1.2deg);">
+          <article class="listing-card bg-white overflow-hidden group cursor-pointer" style="box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
+            <div class="overflow-hidden" style="aspect-ratio: 4/3;">
+              <img src={listings[5].image} alt={listings[5].address} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-sage font-medium mb-1">{listings[5].neighborhood}</p>
+                  <h3 class="font-serif font-bold text-charcoal text-xl">{listings[5].address}</h3>
+                </div>
+                <span class="px-3 py-1 bg-sage/10 text-sage text-[10px] font-sans font-medium uppercase tracking-widest rounded-full shrink-0 ml-3">{listings[5].status}</span>
+              </div>
+              <p class="font-serif font-black text-charcoal text-2xl mb-4">{listings[5].price}</p>
+              <div class="flex gap-4 text-charcoal/45 font-sans text-xs uppercase tracking-widest border-t border-cream-dark pt-4">
+                <span>{listings[5].beds} bd</span><span>&middot;</span><span>{listings[5].baths} ba</span><span>&middot;</span><span>{listings[5].sqft} sf</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center fade-in">
+        <a href="#contact" class="inline-flex items-center gap-3 px-8 py-4 border-2 border-sage text-sage font-sans text-sm font-medium uppercase tracking-widest hover:bg-sage hover:text-cream transition-all duration-200 rounded-sm">
+          View All Properties &rarr;
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== CHAPTER TWO: LIFESTYLE VIGNETTES ===== -->
+    <section id="lifestyle" class="py-24 lg:py-36 overflow-hidden">
+      <div class="px-6 lg:px-16 mb-12 fade-in">
+        <p class="text-[10px] font-sans font-medium uppercase tracking-[0.35em] text-sage mb-3">Chapter Two</p>
+        <h2 class="font-serif font-black text-charcoal leading-tight" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">Life at the<br /><em>Water's Edge</em></h2>
+        <p class="mt-4 font-sans text-charcoal/55 max-w-lg leading-relaxed" style="font-size: 1.05rem;">
+          Encinitas isn't just an address. It's a way of living — woven from salt air, golden afternoons, and community that feels like family.
+        </p>
+      </div>
+      <!-- Horizontal scroll -->
+      <div class="flex gap-5 overflow-x-auto pb-6 px-6 lg:px-16 snap-x snap-mandatory" style="-webkit-overflow-scrolling: touch; scrollbar-width: none; msOverflowStyle: none;">
+        {lifestylePhotos.map((photo) => (
+          <div class="shrink-0 relative snap-start group" style="width: clamp(280px, 38vw, 480px);">
+            <div class="h-96 overflow-hidden rounded-sm">
+              <img src={photo.src} alt={photo.caption} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-charcoal/75 via-charcoal/20 to-transparent rounded-b-sm">
+              <p class="text-[9px] font-sans uppercase tracking-[0.3em] text-cream/65 mb-1">{photo.label}</p>
+              <p class="font-serif italic text-cream text-xl">{photo.caption}</p>
+              <p class="mt-2 text-cream/65 font-sans text-xs hover:text-cream transition-colors cursor-pointer">Learn more &rarr;</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== CHAPTER THREE: AGENT BIO ===== -->
+    <section id="bio" class="py-24 lg:py-36 px-6 lg:px-16 bg-cream-dark">
+      <div class="max-w-screen-xl mx-auto">
+        <div class="mb-14 fade-in">
+          <p class="text-[10px] font-sans font-medium uppercase tracking-[0.35em] text-sage mb-3">Chapter Three</p>
+          <h2 class="font-serif font-black text-charcoal leading-tight" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">Your Guide</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20 items-start">
+          <!-- Headshot -->
+          <div class="lg:col-span-2 fade-in">
+            <div class="border-4 border-cream overflow-hidden" style="box-shadow: 0 20px 60px rgba(0,0,0,0.15); aspect-ratio: 3/4;">
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=85&fit=crop&auto=format"
+                alt="Sarah Mitchell, Realtor"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <p class="mt-4 font-sans text-xs text-charcoal/40 uppercase tracking-widest text-center">Sarah Mitchell, DRE #02134567</p>
+          </div>
+          <!-- Bio content -->
+          <div class="lg:col-span-3 fade-in">
+            <blockquote class="mb-10">
+              <span class="block text-sage font-serif font-black leading-none mb-2 select-none" style="font-size: 5rem; line-height: 0.75;">&ldquo;</span>
+              <p class="font-serif italic text-sage leading-snug" style="font-size: clamp(1.4rem, 2.5vw, 2rem);">
+                I don't just sell homes. I help families write the next chapter of their lives.
+              </p>
+              <footer class="mt-5 font-sans text-xs uppercase tracking-widest text-charcoal/40">&mdash; Sarah Mitchell</footer>
+            </blockquote>
+            <div class="font-sans text-charcoal/65 leading-relaxed space-y-4 mb-10" style="font-size: 1.05rem;">
+              <p>Growing up in Leucadia, Sarah spent her childhood barefoot on Moonlight Beach and exploring the tide pools of Swamis. That deep, personal connection to North County San Diego's coastline is what makes her not just a top-producing agent — but a trusted guide.</p>
+              <p>Over eleven years, Sarah has built a reputation for her meticulous market knowledge, her editorial eye for home presentation, and her fierce advocacy for every client she represents. She's sold over 340 homes — from starter condos in San Marcos to estate-level properties in Rancho Santa Fe.</p>
+              <p>She believes the right home isn't just about square footage. It's about the feeling of driving home at the end of the day. The sound of the ocean at night. The community that becomes family.</p>
+            </div>
+            <ul class="space-y-3 mb-10">
+              {credentials.map((cred) => (
+                <li class="flex items-start gap-3 font-sans text-sm text-charcoal/65">
+                  <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-sage shrink-0"></span>
+                  {cred}
+                </li>
+              ))}
+            </ul>
+            <a href="#contact" class="inline-flex items-center gap-3 px-8 py-4 bg-sage text-cream font-sans text-sm font-medium uppercase tracking-widest hover:bg-sage-dark transition-colors duration-200 rounded-sm">
+              Book a Conversation &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CHAPTER FOUR: RECENT SALES ===== -->
+    <section id="sold" class="py-24 lg:py-36 px-6 lg:px-16 bg-charcoal">
+      <div class="max-w-screen-xl mx-auto">
+        <div class="mb-14 fade-in">
+          <p class="text-[10px] font-sans font-medium uppercase tracking-[0.35em] text-sage-light mb-3">Chapter Four</p>
+          <h2 class="font-serif font-black text-cream leading-tight" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">Proven Results</h2>
+          <p class="mt-4 font-sans text-cream/40 max-w-lg leading-relaxed" style="font-size: 1.05rem;">
+            A track record built one family at a time — 340+ successful transactions along the San Diego coast.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {soldListings.map((sold) => (
+            <article class="group relative overflow-hidden fade-in" style="box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+              <div class="overflow-hidden" style="aspect-ratio: 4/3;">
+                <img
+                  src={sold.image}
+                  alt={sold.address}
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div class="absolute top-4 right-4 px-3 py-1 bg-gold text-charcoal font-sans text-[10px] font-bold uppercase tracking-widest">
+                SOLD
+              </div>
+              <div class="p-5 bg-charcoal/90 border-t border-white/10">
+                <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-sage-light font-medium mb-1">{sold.neighborhood}</p>
+                <h3 class="font-serif font-bold text-cream text-lg mb-2">{sold.address}</h3>
+                <div class="flex items-center justify-between">
+                  <p class="font-serif font-black text-gold text-xl">{sold.price}</p>
+                  <p class="font-sans text-[10px] uppercase tracking-widest text-cream/30">{sold.soldDate}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+        <!-- Stats -->
+        <div class="mt-20 border-t border-white/10 pt-14 grid grid-cols-2 lg:grid-cols-4 gap-10 fade-in">
+          {footerStats.map((stat) => (
+            <div class="text-center">
+              <p class="font-serif font-black text-cream mb-2" style="font-size: clamp(2rem, 4vw, 3.5rem);">{stat.value}</p>
+              <p class="font-sans text-[10px] uppercase tracking-widest text-cream/40">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CHAPTER FIVE: TESTIMONIALS ===== -->
+    <section id="testimonials" class="py-24 lg:py-36 px-6 lg:px-16 bg-cream">
+      <div class="max-w-screen-xl mx-auto">
+        <div class="mb-16 fade-in">
+          <p class="text-[10px] font-sans font-medium uppercase tracking-[0.35em] text-sage mb-3">Chapter Five</p>
+          <h2 class="font-serif font-black text-charcoal leading-tight" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">Their Stories</h2>
+        </div>
+        <!-- Spotlight testimonial -->
+        <div class="mb-16 pb-16 border-b border-sand/30 fade-in">
+          <span class="block font-serif font-black text-sage select-none" style="font-size: 7rem; line-height: 0.65; margin-bottom: 1.5rem;">&ldquo;</span>
+          <p class="font-serif italic text-charcoal leading-snug max-w-4xl" style="font-size: clamp(1.4rem, 3vw, 2.2rem);">
+            {testimonials[0].quote}
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <div class="w-12 h-px bg-sage"></div>
+            <div>
+              <p class="font-sans font-medium text-charcoal text-sm">{testimonials[0].author}</p>
+              <p class="font-sans text-[10px] uppercase tracking-widest text-charcoal/40 mt-0.5">{testimonials[0].location}</p>
+            </div>
+            <div class="flex gap-1">
+              <svg class="w-4 h-4 text-gold fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-gold fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-gold fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-gold fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-gold fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Side-by-side -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+          {testimonials.slice(1).map((t) => (
+            <div class="fade-in">
+              <span class="block font-serif font-black text-sage/25 select-none" style="font-size: 4rem; line-height: 0.65; margin-bottom: 1rem;">&ldquo;</span>
+              <p class="font-serif italic text-charcoal/80 leading-relaxed" style="font-size: 1.2rem;">{t.quote}</p>
+              <div class="mt-6 flex items-center gap-3">
+                <div class="w-8 h-px bg-sage/50"></div>
+                <div>
+                  <p class="font-sans font-medium text-charcoal text-sm">{t.author}</p>
+                  <p class="font-sans text-[10px] uppercase tracking-widest text-charcoal/40 mt-0.5">{t.location}</p>
+                </div>
+              </div>
+              <div class="flex gap-1 mt-3">
+                <svg class="w-3.5 h-3.5 text-gold fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-3.5 h-3.5 text-gold fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-3.5 h-3.5 text-gold fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-3.5 h-3.5 text-gold fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-3.5 h-3.5 text-gold fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CHAPTER SIX: CONTACT ===== -->
+    <section id="contact" class="py-24 lg:py-36 px-6 lg:px-16 bg-sage">
+      <div class="max-w-screen-xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+          <!-- Left: value prop -->
+          <div class="fade-in">
+            <p class="text-[10px] font-sans font-medium uppercase tracking-[0.35em] text-cream/55 mb-4">Chapter Six</p>
+            <h2 class="font-serif font-black text-cream leading-tight mb-6" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">
+              Begin Your<br /><em>Story</em>
+            </h2>
+            <h3 class="font-serif italic text-cream/80 text-2xl mb-8">What's Your Home Worth?</h3>
+            <p class="font-sans text-cream/70 leading-relaxed text-lg mb-10">
+              In a market this nuanced, pricing isn't science — it's craft. Sarah brings eleven years of hyperlocal data, personal relationships with Encinitas buyers, and an editorial eye for what makes a home exceptional.
+            </p>
+            <ul class="space-y-5 mb-12">
+              {valueProps.map((item) => (
+                <li class="flex items-start gap-3">
+                  <span class="mt-2 w-1.5 h-1.5 rounded-full bg-cream/55 shrink-0"></span>
+                  <p class="font-sans text-cream/75 text-sm leading-relaxed">{item}</p>
+                </li>
+              ))}
+            </ul>
+            <div class="pt-10 border-t border-cream/20">
+              <p class="font-sans text-cream/45 text-xs uppercase tracking-widest mb-2">Direct Line</p>
+              <a href="tel:7605550192" class="font-serif font-black text-cream hover:text-cream/80 transition-colors" style="font-size: clamp(1.8rem, 3vw, 2.5rem);">(760) 555-0192</a>
+            </div>
+          </div>
+          <!-- Right: form -->
+          <div class="fade-in">
+            <form id="contact-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="name" class="block font-sans text-[10px] uppercase tracking-widest text-cream/65 mb-2">Full Name</label>
+                  <input type="text" id="name" name="name" required placeholder="Jane Smith"
+                    class="w-full px-4 py-3 bg-cream text-charcoal font-sans text-sm placeholder-charcoal/30 focus:outline-none focus:ring-2 focus:ring-charcoal/20 rounded-sm" />
+                </div>
+                <div>
+                  <label for="phone" class="block font-sans text-[10px] uppercase tracking-widest text-cream/65 mb-2">Phone</label>
+                  <input type="tel" id="phone" name="phone" placeholder="(760) 555-0000"
+                    class="w-full px-4 py-3 bg-cream text-charcoal font-sans text-sm placeholder-charcoal/30 focus:outline-none focus:ring-2 focus:ring-charcoal/20 rounded-sm" />
+                </div>
+              </div>
+              <div>
+                <label for="email" class="block font-sans text-[10px] uppercase tracking-widest text-cream/65 mb-2">Email</label>
+                <input type="email" id="email" name="email" required placeholder="jane@email.com"
+                  class="w-full px-4 py-3 bg-cream text-charcoal font-sans text-sm placeholder-charcoal/30 focus:outline-none focus:ring-2 focus:ring-charcoal/20 rounded-sm" />
+              </div>
+              <div>
+                <p class="font-sans text-[10px] uppercase tracking-widest text-cream/65 mb-3">I'm looking to</p>
+                <div class="flex gap-6">
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="intent" value="buy" class="w-4 h-4 accent-charcoal" />
+                    <span class="font-sans text-sm text-cream/80">Buy</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="intent" value="sell" class="w-4 h-4 accent-charcoal" />
+                    <span class="font-sans text-sm text-cream/80">Sell</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="intent" value="both" class="w-4 h-4 accent-charcoal" />
+                    <span class="font-sans text-sm text-cream/80">Both</span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <label for="message" class="block font-sans text-[10px] uppercase tracking-widest text-cream/65 mb-2">Message</label>
+                <textarea id="message" name="message" rows={5} placeholder="Tell me about your home goals, timeline, or questions..."
+                  class="w-full px-4 py-3 bg-cream text-charcoal font-sans text-sm placeholder-charcoal/30 focus:outline-none focus:ring-2 focus:ring-charcoal/20 rounded-sm resize-none"></textarea>
+              </div>
+              <button type="submit"
+                class="w-full py-4 bg-charcoal text-cream font-sans text-sm font-medium uppercase tracking-widest hover:bg-charcoal/80 transition-colors duration-200 rounded-sm">
+                Start Your Story &rarr;
+              </button>
+              <p class="font-sans text-[10px] text-cream/40 text-center leading-relaxed">
+                Sarah personally responds to every inquiry within 24 hours.
+              </p>
+            </form>
+            <div id="form-success" class="hidden text-center py-12">
+              <p class="font-serif italic text-cream text-2xl mb-3">Thank you.</p>
+              <p class="font-sans text-cream/70 text-sm">Sarah will be in touch within 24 hours.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-charcoal border-t border-white/5 py-16 px-6 lg:px-16">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+        <div>
+          <a href="/" class="inline-flex flex-col leading-none mb-6 group">
+            <span class="font-serif text-2xl font-black italic text-cream tracking-tight group-hover:text-cream/80 transition-colors">Sarah Mitchell</span>
+            <span class="text-[9px] font-sans font-medium uppercase tracking-[0.3em] text-sage mt-1">Compass &middot; Encinitas</span>
+          </a>
+          <p class="font-sans text-cream/40 text-sm leading-relaxed max-w-xs">
+            Helping families find their place along San Diego's most beautiful coastline for over a decade.
+          </p>
+        </div>
+        <div>
+          <p class="font-sans text-[10px] uppercase tracking-widest text-cream/25 mb-5">Navigate</p>
+          <nav class="space-y-3">
+            {footerLinks.map((link) => (
+              <a href="#" class="block font-sans text-sm text-cream/45 hover:text-cream transition-colors">{link}</a>
+            ))}
+          </nav>
+        </div>
+        <div>
+          <p class="font-sans text-[10px] uppercase tracking-widest text-cream/25 mb-5">Contact</p>
+          <div class="space-y-3">
+            <a href="tel:7605550192" class="block font-sans text-sm text-cream/55 hover:text-cream transition-colors">(760) 555-0192</a>
+            <a href="mailto:sarah@compass.com" class="block font-sans text-sm text-cream/55 hover:text-cream transition-colors">sarah@compass.com</a>
+            <p class="font-sans text-sm text-cream/55">320 S El Camino Real, Encinitas CA 92024</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="font-sans text-[11px] text-cream/30">&copy; 2025 Sarah Mitchell &middot; Compass &middot; DRE #02134567 &middot; All rights reserved</p>
+        <p class="font-sans text-[10px] text-cream/20 text-center sm:text-right max-w-sm leading-relaxed">
+          Information deemed reliable but not guaranteed. Equal Housing Opportunity.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating "Call Sarah" pill -->
+  <a
+    id="floating-cta"
+    href="tel:7605550192"
+    class="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 bg-sage text-cream font-sans text-xs font-medium uppercase tracking-widest rounded-full opacity-0 translate-y-4 transition-all duration-300 hover:bg-sage-dark"
+    style="box-shadow: 0 8px 30px rgba(107,143,107,0.4);"
+    aria-label="Call Sarah Mitchell"
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/>
+    </svg>
+    Call Sarah
+  </a>
+
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const ham1 = document.getElementById('ham-1');
+    const ham2 = document.getElementById('ham-2');
+    const ham3 = document.getElementById('ham-3');
+    let menuOpen = false;
+
+    hamburger?.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      if (mobileMenu) {
+        mobileMenu.style.transform = menuOpen ? 'translateX(0)' : 'translateX(100%)';
+      }
+      if (ham1 && ham2 && ham3) {
+        if (menuOpen) {
+          ham1.style.transform = 'rotate(45deg) translateY(6px)';
+          ham2.style.opacity = '0';
+          ham3.style.transform = 'rotate(-45deg) translateY(-6px)';
+          ham3.style.width = '1.5rem';
+        } else {
+          ham1.style.transform = '';
+          ham2.style.opacity = '1';
+          ham3.style.transform = '';
+          ham3.style.width = '1rem';
+        }
+      }
+    });
+
+    // Close mobile menu on nav link click
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        if (mobileMenu) mobileMenu.style.transform = 'translateX(100%)';
+        if (ham1 && ham2 && ham3) {
+          ham1.style.transform = '';
+          ham2.style.opacity = '1';
+          ham3.style.transform = '';
+          ham3.style.width = '1rem';
+        }
+      });
+    });
+
+    // Floating CTA pill — appears after scrolling past hero
+    const floatingCta = document.getElementById('floating-cta');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > window.innerHeight * 0.7;
+      if (floatingCta) {
+        floatingCta.style.opacity = scrolled ? '1' : '0';
+        floatingCta.style.transform = scrolled ? 'translateY(0)' : 'translateY(1rem)';
+      }
+    });
+
+    // Scroll-triggered fade-in via IntersectionObserver
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).style.opacity = '1';
+            (entry.target as HTMLElement).style.transform =
+              (entry.target as HTMLElement).style.transform.replace('translateY(2rem)', 'translateY(0)') || 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+    );
+
+    fadeEls.forEach((el) => {
+      const htmlEl = el as HTMLElement;
+      // Preserve any existing rotation transform
+      const existingTransform = htmlEl.style.transform;
+      htmlEl.style.opacity = '0';
+      htmlEl.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      if (!existingTransform || existingTransform === '') {
+        htmlEl.style.transform = 'translateY(2rem)';
+      }
+      observer.observe(el);
+    });
+
+    // Listing card hover — preserve rotation context
+    document.querySelectorAll('.listing-card').forEach((card) => {
+      const parent = card.parentElement as HTMLElement;
+      const baseRotation = parent?.style.transform || '';
+
+      card.addEventListener('mouseenter', () => {
+        if (parent) {
+          parent.style.transform = 'rotate(0deg) translateY(-6px)';
+          parent.style.zIndex = '10';
+        }
+        (card as HTMLElement).style.boxShadow = '0 30px 80px rgba(0,0,0,0.22)';
+      });
+      card.addEventListener('mouseleave', () => {
+        if (parent) {
+          parent.style.transform = baseRotation;
+          parent.style.zIndex = '';
+        }
+        (card as HTMLElement).style.boxShadow = '0 20px 60px rgba(0,0,0,0.15)';
+      });
+    });
+
+    // Contact form submission (demo)
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const formSuccess = document.getElementById('form-success');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (form && formSuccess) {
+        form.style.display = 'none';
+        formSuccess.classList.remove('hidden');
+      }
+    });
+  </script>
+</Layout>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="6" fill="#FAF7F2"/>
+  <!-- Wave icon in sage green -->
+  <path d="M4 20 C7 16, 11 16, 14 20 C17 24, 21 24, 28 20" stroke="#6B8F6B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M4 14 C7 10, 11 10, 14 14 C17 18, 21 18, 28 14" stroke="#6B8F6B" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
+</svg>
