@@ -247,17 +247,13 @@ const valueProps = [
       <!-- Right: Hero image -->
       <div class="relative lg:w-[55%] min-h-[50vw] lg:min-h-screen overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=900&q=55&fm=webp&fit=crop&auto=format"
-          srcset="
-            https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&q=50&fm=webp&fit=crop&auto=format 400w,
-            https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=750&q=55&fm=webp&fit=crop&auto=format 750w,
-            https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=900&q=55&fm=webp&fit=crop&auto=format 900w
-          "
+          src="/hero.webp"
+          srcset="/hero-sm.webp 640w, /hero.webp 1100w"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 55vw"
           alt="Luxury coastal home in Encinitas"
           class="absolute inset-0 w-full h-full object-cover"
           fetchpriority="high"
-          decoding="async"
+          decoding="sync"
           loading="eager"
         />
         <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-sage to-transparent pointer-events-none hidden lg:block"></div>
