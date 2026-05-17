@@ -40,13 +40,35 @@ const canonicalURL = Astro.url;
 
     <title>{title}</title>
 
-    <!-- Google Fonts: Fraunces + Inter -->
+    <!-- Preload hero image (LCP element) -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1280&q=60&fm=webp&fit=crop&auto=format"
+      imagesrcset="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=640&q=60&fm=webp&fit=crop&auto=format 640w, https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1280&q=60&fm=webp&fit=crop&auto=format 1280w"
+      imagesizes="(max-width: 1024px) 100vw, 55vw"
+    />
+
+    <!-- Google Fonts: non-blocking load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600&display=swap"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <slot name="head" />
   </head>
