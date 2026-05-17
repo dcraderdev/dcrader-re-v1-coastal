@@ -207,7 +207,7 @@ const valueProps = [
     <!-- ===== HERO: ASYMMETRIC SPLIT ===== -->
     <section id="hero" class="min-h-screen flex flex-col lg:flex-row">
       <!-- Left: Sage panel -->
-      <div class="bg-sage flex flex-col justify-between px-8 lg:px-16 pt-28 pb-10 lg:w-[45%] min-h-[65vh] lg:min-h-screen">
+      <div class="bg-sage flex flex-col justify-between px-8 lg:px-16 pt-28 pb-10 lg:w-[45%] min-h-[65vh] lg:min-h-screen order-2 lg:order-1">
         <div>
           <p class="text-[10px] font-sans font-medium uppercase tracking-[0.35em] text-cream/60 mb-10">Compass · Encinitas</p>
           <h1 class="font-serif font-black text-cream leading-[0.88] tracking-tight mb-6" style="font-size: clamp(4rem, 7.5vw, 7.5rem);">
@@ -245,7 +245,7 @@ const valueProps = [
         </div>
       </div>
       <!-- Right: Hero image -->
-      <div class="relative lg:w-[55%] min-h-[50vw] lg:min-h-screen overflow-hidden">
+      <div class="relative lg:w-[55%] min-h-[55vw] lg:min-h-screen overflow-hidden order-1 lg:order-2">
         <img
           src="/hero.webp"
           srcset="/hero-sm.webp 640w, /hero.webp 1100w"
