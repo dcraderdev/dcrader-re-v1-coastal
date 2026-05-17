@@ -152,13 +152,6 @@ const credentials = [
 
 const footerLinks = ['Properties', 'Neighborhoods', 'About Sarah', 'Contact', 'Home Valuation'];
 
-const footerStats = [
-  { value: '$680M+', label: 'Total Volume' },
-  { value: '340+', label: 'Homes Closed' },
-  { value: '98.7%', label: 'List-to-Sale Ratio' },
-  { value: '9 days', label: 'Avg Days on Market' },
-];
-
 const valueProps = [
   'Complimentary home valuation within 24 hours',
   'No pressure, no obligation — just honest insight',
@@ -501,15 +494,6 @@ const valueProps = [
                 </div>
               </div>
             </article>
-          ))}
-        </div>
-        <!-- Stats -->
-        <div class="mt-20 border-t border-white/10 pt-14 grid grid-cols-2 lg:grid-cols-4 gap-10 fade-in">
-          {footerStats.map((stat) => (
-            <div class="text-center">
-              <p class="font-serif font-black text-cream mb-2" style="font-size: clamp(2rem, 4vw, 3.5rem);">{stat.value}</p>
-              <p class="font-sans text-[10px] uppercase tracking-widest text-cream/40">{stat.label}</p>
-            </div>
           ))}
         </div>
       </div>
