@@ -44,28 +44,23 @@ const canonicalURL = Astro.url;
     <link
       rel="preload"
       as="image"
-      href="/hero.webp"
-      imagesrcset="/hero-sm.webp 640w, /hero.webp 1100w"
+      href="/hero-md.webp"
+      imagesrcset="/hero-sm.webp 640w, /hero-md.webp 850w, /hero.webp 1100w"
       imagesizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 55vw"
     />
 
-    <!-- Google Fonts: non-blocking load -->
+    <!-- Google Fonts: non-blocking load (specific weights only, not full variable range) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600&display=swap"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet"
       />
     </noscript>
